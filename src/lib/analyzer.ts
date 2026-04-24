@@ -1,5 +1,5 @@
 /**
- * Baseera AI - APK Analysis Engine
+ * Hares AI - APK Analysis Engine
  * Server-side only module for parsing and analyzing Android APK files.
  *
  * APK files are ZIP archives containing compiled resources, a binary

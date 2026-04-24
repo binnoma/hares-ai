@@ -1,5 +1,5 @@
 /**
- * Baseera AI - Get Analysis Status & Results
+ * Hares AI - Get Analysis Status & Results
  * Polls analysis progress and returns results
  */
 

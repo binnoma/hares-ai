@@ -1,5 +1,5 @@
 /**
- * Baseera AI - Global State Management
+ * Hares AI - Global State Management
  * Zustand store for managing analysis state across the app
  */
 
@@ -78,7 +78,7 @@ export interface AnalysisData {
   updatedAt: string;
 }
 
-interface BaseeraState {
+interface HaresState {
   // Current analysis
   analysisId: string | null;
   analysisData: AnalysisData | null;
@@ -97,7 +97,7 @@ interface BaseeraState {
   reset: () => void;
 }
 
-export const useBaseeraStore = create<BaseeraState>((set) => ({
+export const useHaresStore = create<HaresState>((set) => ({
   analysisId: null,
   analysisData: null,
   isUploading: false,

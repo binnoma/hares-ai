@@ -1,5 +1,5 @@
 /**
- * Baseera AI - Report Generation API
+ * Hares AI - Report Generation API
  * Generates HTML report for a completed analysis
  */
 
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تقرير تحليل - بصيرة AI | ${appInfo.appName}</title>
+  <title>تقرير تحليل - حَارِس AI | ${appInfo.appName}</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -109,7 +109,7 @@ export async function GET(request: NextRequest) {
     <div class="header">
       <h1>🛡️ تقرير تحليل أمني</h1>
       <div class="subtitle">${appInfo.appName} - الإصدار ${appInfo.versionName}</div>
-      <div class="brand">بصيرة AI | Baseera AI - تحليل ذكي للتطبيقات</div>
+      <div class="brand">حَارِس AI | Hares AI - تحليل ذكي للتطبيقات</div>
     </div>
 
     <div class="score-card">
@@ -213,7 +213,7 @@ export async function GET(request: NextRequest) {
     ` : ''}
 
     <div class="footer">
-      <p>تم إنشاء هذا التقرير بواسطة بصيرة AI | Baseera AI</p>
+      <p>تم إنشاء هذا التقرير بواسطة حَارِس AI | Hares AI</p>
       <p>هذا التقرير للاستخدام التعليمي والاختبار القانوني فقط</p>
       <p>${new Date().toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
     </div>

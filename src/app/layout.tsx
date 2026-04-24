@@ -10,10 +10,10 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "بصيرة AI | Baseera AI - تحليل ذكي للتطبيقات",
-  description: "منصة متقدمة لتحليل تطبيقات Android وشرح النتائج باللغة العربية باستخدام الذكاء الاصطناعي",
-  keywords: ["بصيرة", "Baseera", "تحليل تطبيقات", "أمن سيبراني", "APK", "ذكاء اصطناعي"],
-  authors: [{ name: "Baseera AI" }],
+  title: "حَارِس AI | Hares AI - تحليل ذكي للتطبيقات",
+  description: "منصة حَارِس المتقدمة لتحليل تطبيقات Android وشرح النتائج باللغة العربية باستخدام الذكاء الاصطناعي",
+  keywords: ["حَارِس", "Hares", "تحليل تطبيقات", "أمن سيبراني", "APK", "ذكاء اصطناعي"],
+  authors: [{ name: "Hares AI" }],
   icons: {
     icon: "/logo.svg",
   },

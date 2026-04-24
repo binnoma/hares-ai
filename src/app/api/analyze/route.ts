@@ -1,5 +1,5 @@
 /**
- * Baseera AI - Upload & Analyze API
+ * Hares AI - Upload & Analyze API
  * Handles APK file upload and starts the analysis process
  */
 

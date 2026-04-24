@@ -1,5 +1,5 @@
 /**
- * Baseera AI - AI Analysis Module
+ * Hares AI - AI Analysis Module
  * Server-side only module that uses z-ai-web-dev-sdk to analyze
  * APK analysis results and generate Arabic explanations and recommendations.
  */

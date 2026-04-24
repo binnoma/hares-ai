@@ -21,14 +21,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { useBaseeraStore, type AnalysisData } from '@/lib/store';
+import { useHaresStore, type AnalysisData } from '@/lib/store';
 
 // ---------------------------------------------------------------------------
 // Status Polling Hook
 // ---------------------------------------------------------------------------
 
 function useAnalysisPolling(analysisId: string | null) {
-  const { setAnalysisData, setIsAnalyzing } = useBaseeraStore();
+  const { setAnalysisData, setIsAnalyzing } = useHaresStore();
 
   useEffect(() => {
     if (!analysisId) return;
@@ -67,7 +67,7 @@ function useAnalysisPolling(analysisId: string | null) {
 // ---------------------------------------------------------------------------
 
 function LandingSection() {
-  const { setIsUploading, setIsAnalyzing, setAnalysisId, setError } = useBaseeraStore();
+  const { setIsUploading, setIsAnalyzing, setAnalysisId, setError } = useHaresStore();
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -148,8 +148,8 @@ function LandingSection() {
             <Shield className="w-9 h-9 text-white" />
           </div>
           <div>
-            <h1 className="text-4xl font-extrabold tracking-tight">بصيرة</h1>
-            <p className="text-sm text-muted-foreground font-medium">Baseera AI</p>
+            <h1 className="text-4xl font-extrabold tracking-tight">حَارِس</h1>
+            <p className="text-sm text-muted-foreground font-medium">Hares AI</p>
           </div>
         </div>
         <h2 className="text-2xl font-bold mb-3">تحليل ذكي لتطبيقات الهواتف</h2>
@@ -256,7 +256,7 @@ function LandingSection() {
 // ---------------------------------------------------------------------------
 
 function AnalysisProgress() {
-  const { analysisData } = useBaseeraStore();
+  const { analysisData } = useHaresStore();
 
   const steps = [
     { label: 'رفع الملف', done: true },
@@ -355,7 +355,7 @@ function SeverityBadge({ severity }: { severity: 'high' | 'medium' | 'low' }) {
 // ---------------------------------------------------------------------------
 
 function ResultsDashboard() {
-  const { analysisData, setActiveTab } = useBaseeraStore();
+  const { analysisData, setActiveTab } = useHaresStore();
   const [reportLoading, setReportLoading] = useState(false);
 
   if (!analysisData) return null;
@@ -378,7 +378,7 @@ function ResultsDashboard() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `baseera-report-${appInfo.appName || 'app'}.html`;
+        a.download = `hares-report-${appInfo.appName || 'app'}.html`;
         a.click();
         URL.revokeObjectURL(url);
       }
@@ -409,7 +409,7 @@ function ResultsDashboard() {
           </div>
           <div className="flex gap-2">
             <Button
-              onClick={() => useBaseeraStore.getState().reset()}
+              onClick={() => useHaresStore.getState().reset()}
               variant="outline"
               className="gap-2"
             >
@@ -910,8 +910,8 @@ function ResultsDashboard() {
 // Main Page Component
 // ---------------------------------------------------------------------------
 
-export default function BaseeraPage() {
-  const { analysisId, analysisData, isUploading, isAnalyzing, error } = useBaseeraStore();
+export default function HaresPage() {
+  const { analysisId, analysisData, isUploading, isAnalyzing, error } = useHaresStore();
 
   // Poll for analysis status
   useAnalysisPolling(analysisId);
@@ -930,13 +930,13 @@ export default function BaseeraPage() {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
               <Shield className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg">بصيرة <span className="text-emerald-600">AI</span></span>
+            <span className="font-bold text-lg">حَارِس <span className="text-emerald-600">AI</span></span>
           </div>
           {analysisId && (
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => useBaseeraStore.getState().reset()}
+              onClick={() => useHaresStore.getState().reset()}
               className="gap-1.5"
             >
               <RefreshCw className="w-3.5 h-3.5" />
@@ -1001,7 +1001,7 @@ export default function BaseeraPage() {
         <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4" />
-            <span>بصيرة AI | Baseera AI - تحليل ذكي للتطبيقات</span>
+            <span>حَارِس AI | Hares AI - تحليل ذكي للتطبيقات</span>
           </div>
           <p>للاستخدام التعليمي والاختبار القانوني فقط</p>
         </div>
