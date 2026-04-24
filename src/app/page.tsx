@@ -660,8 +660,13 @@ function ResultsDashboard() {
                       التوصيات
                     </h3>
                     <div className="bg-white/60 dark:bg-black/20 rounded-lg p-4">
-                      {aiAnalysis.recommendations.split('\n').map((rec, i) => (
-                        <p key={i} className="text-sm leading-relaxed mb-1">{rec}</p>
+                      {(Array.isArray(aiAnalysis.recommendations)
+                        ? aiAnalysis.recommendations
+                        : aiAnalysis.recommendations.split('\n')
+                      ).map((rec: string, i: number) => (
+                        <p key={i} className="text-sm leading-relaxed mb-1">
+                          {Array.isArray(aiAnalysis.recommendations) ? `${i + 1}. ` : ''}{rec}
+                        </p>
                       ))}
                     </div>
                   </div>

@@ -146,7 +146,7 @@ export async function GET(request: NextRequest) {
         <p><strong>⚠️ شرح مستوى الخطورة:</strong><br/>${aiAnalysis.riskExplanation || ''}</p>
         <p><strong>🔐 تحليل الصلاحيات:</strong><br/>${aiAnalysis.permissionsAnalysis || ''}</p>
         <p><strong>🛡️ التحليل الأمني:</strong><br/>${aiAnalysis.securityAnalysis || ''}</p>
-        <p><strong>📌 التوصيات:</strong><br/>${(aiAnalysis.recommendations || '').replace(/\n/g, '<br/>')}</p>
+        <p><strong>📌 التوصيات:</strong><br/>${Array.isArray(aiAnalysis.recommendations) ? aiAnalysis.recommendations.map((r: string, i: number) => `${i + 1}. ${r}`).join('<br/>') : String(aiAnalysis.recommendations || '').replace(/\n/g, '<br/>')}</p>
       </div>
     </div>
 
