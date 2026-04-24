@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>حَارِس AI - وثيقة المشروع</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #059669;
+  --primary-dark: #047857;
+  --secondary: #0d9488;
+  --accent: #10b981;
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --text-light: #f1f5f9;
+  --text-muted: #94a3b8;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #10b981;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 210mm;
+  background: #0f172a;
+}
+
+body {
+  font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+  color: #1e293b;
+  direction: rtl;
+  line-height: 1.8;
+}
+
+/* ===== COVER PAGE ===== */
+.cover {
+  width: 210mm;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+  page-break-after: always;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.15) 0%, transparent 70%);
+  top: -100px;
+  right: -100px;
+  border-radius: 50%;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%);
+  bottom: -50px;
+  left: -50px;
+  border-radius: 50%;
+}
+
+.cover-icon {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #059669, #0d9488);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 60px rgba(5, 150, 105, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.cover-icon svg {
+  width: 64px;
+  height: 64px;
+  fill: white;
+}
+
+.cover h1 {
+  font-size: 56px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover .subtitle {
+  font-size: 28px;
+  font-weight: 500;
+  color: #10b981;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover .description {
+  font-size: 18px;
+  color: #94a3b8;
+  max-width: 500px;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.cover .meta {
+  margin-top: auto;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  font-size: 14px;
+  color: #64748b;
+  z-index: 1;
+}
+
+.cover .meta a {
+  color: #10b981;
+  text-decoration: none;
+}
+
+/* ===== CONTENT PAGES ===== */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 30px 45px;
+  background: white;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.page-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-header .logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #059669, #0d9488);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-header .logo-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #059669;
+}
+
+.page-header .page-num {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.page-body {
+  flex: 1;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 14px;
+  padding-right: 12px;
+  border-right: 4px solid #059669;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.feature-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.feature-card .icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.feature-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.feature-card p {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.workflow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.workflow-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 12px;
+  border-right: 4px solid #059669;
+}
+
+.step-num {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #059669, #0d9488);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.step-content h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.step-content p {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+.tech-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.tech-table th {
+  background: #0f172a;
+  color: white;
+  padding: 8px 14px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.tech-table td {
+  padding: 7px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 12px;
+  color: #475569;
+}
+
+.tech-table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.code-block {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  direction: ltr;
+  text-align: left;
+  margin: 10px 0;
+  overflow-x: auto;
+}
+
+.code-block .comment { color: #64748b; }
+.code-block .command { color: #10b981; }
+
+.warning-box {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-right: 4px solid #ef4444;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.warning-box h4 {
+  color: #dc2626;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.warning-box p {
+  color: #991b1b;
+  font-size: 13px;
+  margin: 0;
+}
+
+.info-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-right: 4px solid #059669;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.info-box h4 {
+  color: #047857;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.info-box p {
+  color: #065f46;
+  font-size: 13px;
+  margin: 0;
+}
+
+.structure-tree {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  direction: ltr;
+  text-align: left;
+  color: #475569;
+}
+
+.structure-tree .folder { color: #059669; font-weight: 700; }
+.structure-tree .file { color: #64748b; }
+
+.footer-credit {
+  margin-top: auto;
+  padding-top: 12px;
+  text-align: center;
+  border-top: 1px solid #e2e8f0;
+  font-size: 12px;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.footer-credit a {
+  color: #059669;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-green { background: #dcfce7; color: #166534; }
+.badge-red { background: #fee2e2; color: #991b1b; }
+.badge-yellow { background: #fef9c3; color: #854d0e; }
+
+.severity-row {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.severity-card {
+  flex: 1;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+.severity-card.high { background: #fee2e2; }
+.severity-card.medium { background: #fef9c3; }
+.severity-card.low { background: #dcfce7; }
+
+.severity-card .num {
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.severity-card.high .num { color: #dc2626; }
+.severity-card.medium .num { color: #d97706; }
+.severity-card.low .num { color: #059669; }
+
+.severity-card .label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.severity-card.high .label { color: #991b1b; }
+.severity-card.medium .label { color: #854d0e; }
+.severity-card.low .label { color: #166534; }
+
+@media print {
+  .page { page-break-after: always; }
+  .cover { page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER PAGE ===== -->
+<div class="cover">
+  <div class="cover-icon">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 2.18l7 3.89v5.93c0 4.56-3.15 8.83-7 9.93-3.85-1.1-7-5.37-7-9.93V8.07l7-3.89z"/><path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z"/></svg>
+  </div>
+  <h1>حَارِس AI</h1>
+  <div class="subtitle">Hares AI</div>
+  <p class="description">
+    منصة تحليل أمني ذكية لتطبيقات الهواتف<br/>
+    شرح النتائج باللغة العربية باستخدام الذكاء الاصطناعي
+  </p>
+  <div class="meta">
+    <p>وثيقة المشروع | Project Documentation</p>
+    <p>المطور: <a href="https://github.com/binnoma">binnoma@</a> | الإمارات 🇦🇪</p>
+    <p>2025</p>
+  </div>
+</div>
+
+<!-- ===== PAGE 2: ABOUT ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      </div>
+      <span class="logo-text">حَارِس AI</span>
+    </div>
+    <span class="page-num">2</span>
+  </div>
+
+  <div class="page-body">
+    <h2>🎯 نبذة عن المشروع</h2>
+    <p>
+      حَارِس AI هي منصة متقدمة لتحليل تطبيقات Android بشكل ساكن (Static Analysis)، مع شرح النتائج باللغة العربية باستخدام الذكاء الاصطناعي. المشروع مصمم ليكون بديلاً عربياً لأدوات مثل MobSF، مع التركيز على تجربة المستخدم العربية وتقديم توضيحات ذكية باللغة الأم.
+    </p>
+    <p>
+      يهدف المشروع إلى سد الفجوة في أدوات التحليل الأمني العربية، حيث تفتقر معظم الأدوات المتاحة لدعم اللغة العربية وشرح النتائج بطريقة يفهمها المطور العربي.
+    </p>
+
+    <div class="warning-box">
+      <h4>⚠️ تنبيه قانوني</h4>
+      <p>هذه الأداة مخصصة للاستخدام التعليمي والاختبار الأمني القانوني فقط. لا يُسمح باستخدامها لتجاوز الحمايات أو أي أغراض غير قانونية. التحليل الساكن فقط - لا يتم تشغيل التطبيق.</p>
+    </div>
+
+    <h2>✨ المميزات الرئيسية</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">🔍</div>
+        <h4>تحليل عميق</h4>
+        <p>استخراج الصلاحيات والثغرات ونقاط الاتصال API والبيانات الحساسة</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🧠</div>
+        <h4>ذكاء اصطناعي</h4>
+        <p>شرح النتائج بالعربي مع توصيات أمنية واضحة ومفصلة</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📄</div>
+        <h4>تقارير شاملة</h4>
+        <p>تقارير HTML تفاعلية مع درجة خطورة وتصنيف لوني</p>
+      </div>
+    </div>
+
+    <h3>🔧 مميزات إضافية</h3>
+    <p>
+      ✅ واجهة عربية كاملة (RTL) &nbsp; ✅ تحليل AndroidManifest.xml &nbsp; ✅ كشف الصلاحيات الخطيرة<br/>
+      ✅ اكتشاف اتصالات HTTP غير آمنة &nbsp; ✅ استخراج API Keys وSecrets<br/>
+      ✅ تحديد المكتبات المستخدمة &nbsp; ✅ تحليل تجريبي بدون رفع ملف &nbsp; ✅ تصميم متجاوب
+    </p>
+  </div>
+
+  <div class="footer-credit">
+    صنع بحب ❤️ من الإمارات 🇦🇪 | المطور: <a href="https://github.com/binnoma">binnoma@</a>
+  </div>
+</div>
+
+<!-- ===== PAGE 3: HOW IT WORKS ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      </div>
+      <span class="logo-text">حَارِس AI</span>
+    </div>
+    <span class="page-num">3</span>
+  </div>
+
+  <div class="page-body">
+    <h2>🔄 كيف يعمل البرنامج</h2>
+
+    <div class="workflow-steps">
+      <div class="workflow-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>📤 رفع الملف</h4>
+          <p>اسحب وأفلت ملف APK أو اختر من جهازك. يدعم ملفات حتى 100 ميجابايت.</p>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>🔍 التحليل الساكن</h4>
+          <p>يتم استخراج المكونات والصلاحيات والثغرات وAPI endpoints والبيانات الحساسة تلقائياً.</p>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>🧠 تحليل الذكاء الاصطناعي</h4>
+          <p>يقوم AI بتحليل النتائج وشرحها بالعربية وتقديم توصيات أمنية مخصصة.</p>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>📊 عرض النتائج</h4>
+          <p>لوحة تحكم شاملة مع 7 أقسام: نظرة عامة، تحليل AI، الصلاحيات، المخاطر، API، بيانات حساسة، المكتبات.</p>
+        </div>
+      </div>
+      <div class="workflow-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>📥 تحميل التقرير</h4>
+          <p>حمّل تقرير HTML كاملاً للمشاركة أو الأرشفة، جاهز للطباعة.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>📈 تصنيف المخاطر</h2>
+    <p>يتم تصنيف كل خطر أو صلاحية إلى ثلاثة مستويات:</p>
+    <div class="severity-row">
+      <div class="severity-card high">
+        <div class="num">🔴</div>
+        <div class="label">عالي الخطورة</div>
+      </div>
+      <div class="severity-card medium">
+        <div class="num">🟡</div>
+        <div class="label">متوسط الخطورة</div>
+      </div>
+      <div class="severity-card low">
+        <div class="num">🟢</div>
+        <div class="label">منخفض الخطورة</div>
+      </div>
+    </div>
+
+    <p>يتم حساب درجة الخطورة الشاملة (0-100) بناءً على عدد وشدة المخاطر المكتشفة:</p>
+    <p>
+      • <strong>0-29:</strong> <span class="badge badge-green">آمن</span> — التطبيق آمن بشكل عام<br/>
+      • <strong>30-59:</strong> <span class="badge badge-yellow">يحتاج تحسين</span> — توجد مخاطر يجب معالجتها<br/>
+      • <strong>60-100:</strong> <span class="badge badge-red">خطير</span> — التطبيق يحتوي على ثغرات خطيرة
+    </p>
+  </div>
+
+  <div class="footer-credit">
+    صنع بحب ❤️ من الإمارات 🇦🇪 | المطور: <a href="https://github.com/binnoma">binnoma@</a>
+  </div>
+</div>
+
+<!-- ===== PAGE 4: TECH & STRUCTURE ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      </div>
+      <span class="logo-text">حَارِس AI</span>
+    </div>
+    <span class="page-num">4</span>
+  </div>
+
+  <div class="page-body">
+    <h2>🛠️ التقنيات المستخدمة</h2>
+    <table class="tech-table">
+      <thead>
+        <tr>
+          <th>التقنية</th>
+          <th>الاستخدام</th>
+          <th>الإصدار</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Next.js</td><td>إطار العمل الرئيسي</td><td>16</td></tr>
+        <tr><td>TypeScript</td><td>لغة البرمجة</td><td>5</td></tr>
+        <tr><td>Prisma ORM</td><td>قاعدة البيانات (SQLite)</td><td>6+</td></tr>
+        <tr><td>Tailwind CSS</td><td>التصميم والأنماط</td><td>4</td></tr>
+        <tr><td>shadcn/ui</td><td>مكونات واجهة المستخدم</td><td>Latest</td></tr>
+        <tr><td>Framer Motion</td><td>الحركات والتأثيرات</td><td>11+</td></tr>
+        <tr><td>Zustand</td><td>إدارة الحالة</td><td>5</td></tr>
+        <tr><td>z-ai-web-dev-sdk</td><td>تكامل الذكاء الاصطناعي</td><td>Latest</td></tr>
+      </tbody>
+    </table>
+
+    <h2>📁 هيكل المشروع</h2>
+    <div class="structure-tree">
+      <span class="folder">hares-ai/</span><br/>
+      ├── <span class="folder">prisma/</span><br/>
+      │   └── schema.prisma &nbsp;&nbsp;<span class="file"># مخطط قاعدة البيانات</span><br/>
+      ├── <span class="folder">src/</span><br/>
+      │   ├── <span class="folder">app/</span><br/>
+      │   │   ├── <span class="folder">api/analyze/</span> &nbsp;<span class="file"># API رفع وتحليل الملفات</span><br/>
+      │   │   ├── <span class="folder">api/analyses/</span> &nbsp;<span class="file"># API استعلام النتائج</span><br/>
+      │   │   ├── <span class="folder">api/report/</span> &nbsp;&nbsp;<span class="file"># API إنشاء التقارير</span><br/>
+      │   │   ├── globals.css &nbsp;&nbsp;<span class="file"># الأنماط العامة</span><br/>
+      │   │   ├── layout.tsx &nbsp;&nbsp;<span class="file"># التخطيط الرئيسي (RTL)</span><br/>
+      │   │   └── page.tsx &nbsp;&nbsp;&nbsp;<span class="file"># الصفحة الرئيسية</span><br/>
+      │   ├── <span class="folder">components/ui/</span> <span class="file"># مكونات shadcn/ui</span><br/>
+      │   └── <span class="folder">lib/</span><br/>
+      │       ├── analyzer.ts &nbsp;&nbsp;<span class="file"># محرك التحليل الساكن</span><br/>
+      │       ├── ai-analyzer.ts <span class="file"># تحليل الذكاء الاصطناعي</span><br/>
+      │       ├── db.ts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file"># اتصال قاعدة البيانات</span><br/>
+      │       ├── store.ts &nbsp;&nbsp;&nbsp;&nbsp;<span class="file"># إدارة الحالة</span><br/>
+      │       └── utils.ts &nbsp;&nbsp;&nbsp;&nbsp;<span class="file"># أدوات مساعدة</span><br/>
+      ├── <span class="folder">public/</span><br/>
+      │   └── logo.svg &nbsp;&nbsp;&nbsp;&nbsp;<span class="file"># شعار المشروع</span><br/>
+      ├── <span class="folder">docs/images/</span> &nbsp;&nbsp;&nbsp;<span class="file"># صور التوثيق</span><br/>
+      ├── .env.example &nbsp;&nbsp;<span class="file"># متغيرات البيئة</span><br/>
+      ├── LICENSE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="file"># رخصة MIT</span><br/>
+      └── README.md &nbsp;&nbsp;&nbsp;&nbsp;<span class="file"># التوثيق</span>
+    </div>
+  </div>
+
+  <div class="footer-credit">
+    صنع بحب ❤️ من الإمارات 🇦🇪 | المطور: <a href="https://github.com/binnoma">binnoma@</a>
+  </div>
+</div>
+
+<!-- ===== PAGE 5: INSTALLATION ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      </div>
+      <span class="logo-text">حَارِس AI</span>
+    </div>
+    <span class="page-num">5</span>
+  </div>
+
+  <div class="page-body">
+    <h2>📦 التثبيت والتشغيل</h2>
+
+    <h3>المتطلبات الأساسية</h3>
+    <p>• Node.js 18+ أو Bun &nbsp;&nbsp; • npm أو bun أو yarn</p>
+
+    <h3>خطوات التثبيت</h3>
+    <div class="code-block">
+      <span class="comment"># استنساخ المستودع</span><br/>
+      <span class="command">git clone</span> https://github.com/binnoma/hares-ai.git<br/>
+      <span class="command">cd</span> hares-ai<br/><br/>
+      <span class="comment"># تثبيت التبعيات</span><br/>
+      <span class="command">bun install</span><br/><br/>
+      <span class="comment"># إعداد قاعدة البيانات</span><br/>
+      <span class="command">cp</span> .env.example .env<br/>
+      <span class="command">bun run</span> db:push<br/><br/>
+      <span class="comment"># تشغيل المشروع</span><br/>
+      <span class="command">bun run</span> dev
+    </div>
+
+    <div class="info-box">
+      <h4>💡 ملاحظة</h4>
+      <p>افتح المتصفح على http://localhost:3000 بعد تشغيل المشروع. يمكنك استخدام ميزة "التحليل التجريبي" لاختبار البرنامج بدون رفع ملف APK حقيقي.</p>
+    </div>
+
+    <h2>🔒 الأمان والخصوصية</h2>
+    <p>حَارِس AI مصمم مع مراعاة أعلى معايير الأمان والخصوصية:</p>
+    <p>
+      ✅ <strong>تحليل ساكن فقط</strong> — لا يتم تشغيل التطبيق المحلل<br/>
+      ✅ <strong>لا تجاوز حمايات</strong> — الأداة لا تتجاوز أي آليات حماية<br/>
+      ✅ <strong>حذف تلقائي</strong> — الملفات المرفوعة تُحذف بعد التحليل<br/>
+      ✅ <strong>تخزين محلي</strong> — جميع البيانات مخزنة محلياً فقط<br/>
+      ✅ <strong>استخدام تعليمي</strong> — الأداة مخصصة للتعلم والاختبار القانوني
+    </p>
+
+    <h2>🗺️ خارطة الطريق</h2>
+    <p>
+      🔲 دعم تحليل تطبيقات iOS (IPA) &nbsp;&nbsp; 🔲 تقارير PDF بالإضافة إلى HTML<br/>
+      🔲 تحليل ديناميكي (Dynamic Analysis) &nbsp;&nbsp; 🔲 مقارنة بين إصدارات التطبيق<br/>
+      🔲 نظام تنبيهات للثغرات الجديدة &nbsp;&nbsp; 🔲 دعم لغات إضافية<br/>
+      🔲 وضع CLI للتحليل من سطر الأوامر
+    </p>
+  </div>
+
+  <div class="footer-credit">
+    صنع بحب ❤️ من الإمارات 🇦🇪 | المطور: <a href="https://github.com/binnoma">binnoma@</a>
+  </div>
+</div>
+
+</body>
+</html>
