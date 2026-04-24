@@ -998,12 +998,26 @@ export default function HaresPage() {
 
       {/* Footer */}
       <footer className="mt-auto border-t bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4" />
-            <span>حَارِس AI | Hares AI - تحليل ذكي للتطبيقات</span>
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col items-center gap-3 text-xs text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-2">
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4" />
+              <span>حَارِس AI | Hares AI - تحليل ذكي للتطبيقات</span>
+            </div>
+            <p>للاستخدام التعليمي والاختبار القانوني فقط</p>
           </div>
-          <p>للاستخدام التعليمي والاختبار القانوني فقط</p>
+          <div className="flex items-center gap-1.5 pt-1 border-t border-border/50 w-full justify-center">
+            <span className="text-red-500">&#9829;</span>
+            <span>صنع بحب من الإمارات &#x1F1E6;&#x1F1EA; من المطور:</span>
+            <a
+              href="https://github.com/binnoma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold text-emerald-600 hover:text-emerald-700 hover:underline transition-colors"
+            >
+              binnoma@
+            </a>
+          </div>
         </div>
       </footer>
     </div>
